@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         let size = min(button.frame.width, button.frame.height)
         
         let xOffset = button.frame.midX
-        let yOffset = button.frame.midY
+        var yOffset = button.frame.midY - size / 2
         yOffset -= size * CGFloat(row)
         return CGPoint(x: xOffset, y: yOffset)
     }
