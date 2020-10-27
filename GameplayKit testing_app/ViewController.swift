@@ -41,5 +41,40 @@ class ViewController: UIViewController {
             
         }
     }
+    
+    
+    func addChip(inColumn column: Int, row: Int, color: UIColor) {
+        let button = columnButtons[column]
+        let size = min(button.frame.width, button.frame.height / 6)
+        let rect = CGRect(x: 0, y: 0, width: size, height: size)
+        
+        if (placedChips[column].count < row + 1) {
+            let newChip = UIView()
+            newChip.frame = rect
+            newChip.isUserInteractionEnabled = false
+            newChip.backgroundColor = color
+            newChip.layer.cornerRadius = size / 2 //making it a circle
+            newChip.center = positionForChip(inColumn: column, row: row)
+            newChip.transform = CGAffineTransform(translationX: 0, y: -800)
+            view.addSubview(newChip)
+            
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
+                newChip.transform = CGAffineTransform.identity
+            })
+            
+            placedChips[column].append(newChip)
+            
+        }
+    }
+    
+    func positionForChip(inColumn column: Int, row: Int) -> CGPoint {
+        let button = columnButtons[column]
+        let size = min(button.frame.width, button.frame.height)
+        
+        let xOffset = button.frame.midX
+        let yOffset = button.frame.midY
+        yOffset -= size * CGFloat(row)
+        return CGPoint(x: xOffset, y: yOffset)
+    }
 }
 
