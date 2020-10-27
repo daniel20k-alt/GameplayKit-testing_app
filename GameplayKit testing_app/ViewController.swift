@@ -15,7 +15,12 @@ class ViewController: UIViewController {
     @IBOutlet var columnButtons: [UIButton]!
     
     @IBAction func makeMove(_ sender: UIButton) {
+        let column = sender.tag
         
+        if let row = board.nextEmptySlot(in: column) {
+            board.add(chip: .red, in: column)
+            addChip(inColumn: column, row: row, color: .red)
+        }
     }
     
     override func viewDidLoad() {
@@ -25,6 +30,7 @@ class ViewController: UIViewController {
             placedChips.append([UIView]())
             
         }
+        
     resetBoard()
     
     }
@@ -61,20 +67,19 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
                 newChip.transform = CGAffineTransform.identity
             })
-            
+
             placedChips[column].append(newChip)
-            
         }
     }
     
+    //determining where the chip should be placed
     func positionForChip(inColumn column: Int, row: Int) -> CGPoint {
         let button = columnButtons[column]
         let size = min(button.frame.width, button.frame.height)
         
         let xOffset = button.frame.midX
-        var yOffset = button.frame.midY - size / 2
+        var yOffset = button.frame.maxY - size / 2
         yOffset -= size * CGFloat(row)
         return CGPoint(x: xOffset, y: yOffset)
     }
 }
-
