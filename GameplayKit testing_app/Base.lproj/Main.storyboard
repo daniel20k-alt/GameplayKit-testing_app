@@ -29,28 +29,43 @@
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pj2-q2-FUT">
                                         <rect key="frame" x="59.5" y="0.0" width="57.5" height="808"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NEa-O2-IvK"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8I-mv-6Bt">
                                         <rect key="frame" x="119" y="0.0" width="57.5" height="808"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BRw-bs-Uor"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9B4-0T-e9R">
                                         <rect key="frame" x="178.5" y="0.0" width="57" height="808"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A6K-tx-odH"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KjE-C7-tdp">
                                         <rect key="frame" x="237.5" y="0.0" width="57.5" height="808"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OfC-zZ-U6I"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgU-Rf-fKA">
                                         <rect key="frame" x="297" y="0.0" width="57.5" height="808"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jCY-0r-Z6P"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Nk-Sb-5yz">
                                         <rect key="frame" x="356.5" y="0.0" width="57.5" height="808"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HGL-FN-TUf"/>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HmQ-99-VGI"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -68,8 +83,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="uTx-a8-dJI"/>
                     <connections>
-                        <outletCollection property="columnButtons" destination="kSg-gA-Zjw" collectionClass="NSMutableArray" id="GVk-tO-MUQ"/>
-                        <outletCollection property="columnButtons" destination="1Nk-Sb-5yz" collectionClass="NSMutableArray" id="4kr-g9-fWo"/>
+                        <outletCollection property="columnButtons" destination="kSg-gA-Zjw" collectionClass="NSMutableArray" id="ew8-rx-2wW"/>
+                        <outletCollection property="columnButtons" destination="pj2-q2-FUT" collectionClass="NSMutableArray" id="fAk-iD-R6F"/>
+                        <outletCollection property="columnButtons" destination="q8I-mv-6Bt" collectionClass="NSMutableArray" id="EZx-t7-NVx"/>
+                        <outletCollection property="columnButtons" destination="9B4-0T-e9R" collectionClass="NSMutableArray" id="eWv-z8-YHo"/>
+                        <outletCollection property="columnButtons" destination="KjE-C7-tdp" collectionClass="NSMutableArray" id="4Wg-pp-guQ"/>
+                        <outletCollection property="columnButtons" destination="lgU-Rf-fKA" collectionClass="NSMutableArray" id="UxJ-6f-lYt"/>
+                        <outletCollection property="columnButtons" destination="1Nk-Sb-5yz" collectionClass="NSMutableArray" id="RwX-g8-b18"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
