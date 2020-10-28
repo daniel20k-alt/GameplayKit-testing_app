@@ -41,10 +41,11 @@ class Board: NSObject {
     
     func nextEmptySlot(in column: Int) -> Int? {
         for row in 0 ..< Board.height {
-            if chip(inColumn: column, row: row) == .none { //check if there's at least one empty slot with .none
+            if chip(inColumn: column, row: row) == .none {
                 return row
             }
         }
+
         return nil
     }
     
@@ -54,9 +55,9 @@ class Board: NSObject {
     }
     
     
-    func add(chip: ChipColor, in colum: Int) {
-        if let row = nextEmptySlot(in: colum) {
-            set(chip: chip, in: colum, row: row)
+    func add(chip: ChipColor, in column: Int) {
+        if let row = nextEmptySlot(in: column) {
+            set(chip: chip, in: column, row: row)
         }
     }
 }
