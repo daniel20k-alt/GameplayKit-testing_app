@@ -20,8 +20,13 @@ class Board: NSObject {
     
     var slots = [ChipColor]()
     
+    var currentPlayer: Player
+    
     //all slots will have no chip in them by default
     override init() {
+        
+        currentPlayer = Player.allPlayers[0]
+        
         for _ in 0 ..< Board.width * Board.height {
             slots.append(.none)
         }
@@ -60,4 +65,15 @@ class Board: NSObject {
             set(chip: chip, in: column, row: row)
         }
     }
+    
+    //updating the UI to show whose turn it is
+    
+    func isFull() -> Bool {
+        return false
+    }
+    
+    func isWin(for player: Player) -> Bool {
+        return false
+    }
+    
 }

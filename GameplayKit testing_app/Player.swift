@@ -12,7 +12,7 @@ import GameplayKit
 class Player: NSObject, GKGameModelPlayer {
     var chip: ChipColor
     var color: UIColor
-    var name: String
+    var name: String //red or black
     var playerId: Int
 
     static var allPlayers = [Player(chip: .red), Player(chip: .black)]

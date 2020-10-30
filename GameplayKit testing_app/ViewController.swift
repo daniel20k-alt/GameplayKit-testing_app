@@ -79,4 +79,38 @@ class ViewController: UIViewController {
         yOffset -= size * CGFloat(row)
         return CGPoint(x: xOffset, y: yOffset)
     }
+    
+    //updating the UI to show whose turn it is
+    func updateUI() {
+        title = "\(board.currentPlayer.name)'s turn"
+    }
+    
+    
+    //calling after every move, to see if the game has to end
+    func continueGame() {
+        var gameOverTitle: String? = nil
+        
+        if board.isWin(for: board.currentPlayer) {
+            gameOverTitle = "\(board.currentPlayer.name) Wins!"
+        } else if board.isFull() {
+            gameOverTitle = "Draw!"
+        }
+        
+        //alert controller that resets a draw game
+        if gameOverTitle != nil {
+            let alert = UIAlertController(title: gameOverTitle, message: nil, preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Play Again!", style: .default) { [unowned self] (action) in
+                self.resetBoard() }
+            
+            alert.addAction(alertAction)
+            present(alert, animated:  true)
+            
+            return
+        }
+     
+        //if game not over or not tie - change the player
+        board.currentPlayer = board.currentPlayer.opponent
+        updateUI()
+        
+    }
 }
