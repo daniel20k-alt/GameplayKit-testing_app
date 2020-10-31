@@ -15,6 +15,7 @@
 		EE5E471225437198004E3928 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE5E471025437198004E3928 /* LaunchScreen.storyboard */; };
 		EE5E471C25470E42004E3928 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5E471B25470E42004E3928 /* Board.swift */; };
 		EE5E471F254B7109004E3928 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5E471E254B7109004E3928 /* Player.swift */; };
+		EE5E4722254E14B7004E3928 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5E4721254E14B7004E3928 /* Move.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		EE5E471325437198004E3928 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE5E471B25470E42004E3928 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		EE5E471E254B7109004E3928 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		EE5E4721254E14B7004E3928 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				EE5E470525437193004E3928 /* AppDelegate.swift */,
 				EE5E470725437193004E3928 /* SceneDelegate.swift */,
 				EE5E471B25470E42004E3928 /* Board.swift */,
+				EE5E4721254E14B7004E3928 /* Move.swift */,
 				EE5E470925437193004E3928 /* ViewController.swift */,
 				EE5E470B25437193004E3928 /* Main.storyboard */,
 				EE5E471E254B7109004E3928 /* Player.swift */,
@@ -147,6 +150,7 @@
 				EE5E470625437193004E3928 /* AppDelegate.swift in Sources */,
 				EE5E471C25470E42004E3928 /* Board.swift in Sources */,
 				EE5E471F254B7109004E3928 /* Player.swift in Sources */,
+				EE5E4722254E14B7004E3928 /* Move.swift in Sources */,
 				EE5E470825437193004E3928 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
