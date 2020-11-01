@@ -152,6 +152,15 @@ class ViewController: UIViewController {
     
     //combining the above methods to create the move
     func startAIMove() {
+        //disabling the column buttons and show the activity spinner
+        columnButtons.forEach { $0.isEnabled = false }
+        
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.startAnimating()
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: spinner)
+       ///
+
         DispatchQueue.global().async { [unowned self] in
             let strategistTime = CFAbsoluteTimeGetCurrent() //computes differences in time
             guard let column = self.columnForAIMove() else { return }
