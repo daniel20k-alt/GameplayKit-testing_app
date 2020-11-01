@@ -14,7 +14,8 @@ enum ChipColor: Int {
     case black
 }
 
-class Board: NSObject {
+class Board: NSObject, GKGameModel, NSCopying {
+    //nscopying - gameplayKit will copy multiple instances of the game board
     
     static var width = 7
     static var height = 6
@@ -116,5 +117,60 @@ class Board: NSObject {
         
         return true
     }
+    
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Board()
+        copy.setGameModel(self)
+        return copy
+    }
+    
+    
+    func setGameModel(_ gameModel: GKGameModel) {
+        if let board = gameModel as? Board {
+            slots = board.slots
+            currentPlayer = board.currentPlayer
+        }
+    }
+    
+    
+    func gameModelUpdates(for player: GKGameModelPlayer) -> [GKGameModelUpdate]? {
+        
+        //downcasting the GKGameModelPlayer parameter into Player object
+        if let playerObject  = player as? Player {
+            
+            if isWin(for: playerObject) || isWin(for: playerObject.opponent) {
+                return nil //if either has won - no moves available
+            }
+            
+            var moves = [Move]() //array will hold Move objects
+            
+                //looping to see whether the player can move in that colum
+            for column in 0 ..< Board.width {
+                if canMove(in: column) {
+                    moves.append(Move(column: column)) //appending the array of possible moves
+                }
+            }
+            
+            return moves //telling the AI the moves it can make
+        }
+        
+        return nil
+    }
+    
+    //AI trying all the moves
+    func apply(_ gameModelUpdate: GKGameModelUpdate) {
+        if let move = gameModelUpdate as? Move {
+            add(chip: currentPlayer.chip, in: move.column)
+            currentPlayer = currentPlayer.opponent
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
     
 }
