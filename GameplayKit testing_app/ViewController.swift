@@ -142,6 +142,12 @@ class ViewController: UIViewController {
     
     //once the above move has been found, it has to be run
     func makeAIMove(in column: Int) {
+        
+        //the activity buttons dissapears when the AI finished its move
+        columnButtons.forEach { $0.isEnabled = true }
+        navigationItem.leftBarButtonItem = nil
+        
+        
         if let row = board.nextEmptySlot(in: column) {
             board.add(chip: board.currentPlayer.chip, in: column)
             addChip(inColumn: column, row: row, color: board.currentPlayer.color)
@@ -153,7 +159,7 @@ class ViewController: UIViewController {
     //combining the above methods to create the move
     func startAIMove() {
         //disabling the column buttons and show the activity spinner
-        columnButtons.forEach { $0.isEnabled = false }
+        columnButtons.forEach { $0.isEnabled = false } //looping through each item in the array and $0 dissabling
         
         let spinner = UIActivityIndicatorView(style: .large)
         spinner.startAnimating()
