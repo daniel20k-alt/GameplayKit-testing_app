@@ -167,10 +167,28 @@ class Board: NSObject, GKGameModel, NSCopying {
     }
     
     
+    //providing playe score after each move
+    func score(for player: GKGameModelPlayer) -> Int {
+        if let playerObject = player as? Player {
+            if isWin(for: playerObject) {
+                return 1000
+            } else if isWin(for: playerObject.opponent) {
+                return -1000
+            }
+        }
+        
+        return 0 //if nothing happens
+    }
     
     
+    //conforming to GKGameModel protocol, by using computed properties
+    var players: [GKGameModelPlayer]? {
+        return Player.allPlayers
+    }
     
-    
+    var activePlayer: GKGameModelPlayer? {
+        return currentPlayer
+    }
     
     
 }

@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import GameplayKit
 
 var placedChips = [[UIView]]()
 var board: Board!
+
+var strategist: GKMinmaxStrategist!
 
 class ViewController: UIViewController {
     
@@ -27,6 +30,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        strategist = GKMinmaxStrategist()
+        strategist.maxLookAheadDepth = 5
+        strategist.randomSource = nil //returning the first best move in a tie of options
+       // strategist.randomSource = GKARC4RandomSource() //random best move
+        
         for _ in 0 ..< Board.width {
             placedChips.append([UIView]())
         }
@@ -36,6 +44,9 @@ class ViewController: UIViewController {
     
     func resetBoard() {
         board = Board()
+        
+        strategist.gameModel = board //sending all new boards to the strategist to analyze
+        
         updateUI()
 
         for i in 0 ..< placedChips.count {
@@ -85,6 +96,11 @@ class ViewController: UIViewController {
     //updating the UI to show whose turn it is
     func updateUI() {
         title = "\(board.currentPlayer.name)'s turn"
+       
+        //activating the AI when it's black's move
+        if board.currentPlayer.chip == .black {
+            startAIMove()
+        }
     }
     
     
@@ -113,6 +129,40 @@ class ViewController: UIViewController {
         //if game not over or not tie - change the player
         board.currentPlayer = board.currentPlayer.opponent
         updateUI()
+    }
+    
+    
+    func columnForAIMove() -> Int? { //return an Int? for best column for a move
+        if let aiMove = strategist.bestMove(for: board.currentPlayer) as? Move {
+            return aiMove.column
+        }
         
+        return nil
+    }
+    
+    //once the above move has been found, it has to be run
+    func makeAIMove(in column: Int) {
+        if let row = board.nextEmptySlot(in: column) {
+            board.add(chip: board.currentPlayer.chip, in: column)
+            addChip(inColumn: column, row: row, color: board.currentPlayer.color)
+            
+            continueGame() //checking for win or draw, and move the turn
+        }
+    }
+    
+    //combining the above methods to create the move
+    func startAIMove() {
+        DispatchQueue.global().async { [unowned self] in
+            let strategistTime = CFAbsoluteTimeGetCurrent() //computes differences in time
+            guard let column = self.columnForAIMove() else { return }
+            let delta = CFAbsoluteTimeGetCurrent() - strategistTime
+            
+            let aiTimeCeiling = 1.0 //standard time
+            let delay = aiTimeCeiling - delta //making the AI take 1 second to display the move
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                self.makeAIMove(in: column)
+            }
+        }
     }
 }
